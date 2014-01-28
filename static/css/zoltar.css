@@ -1,0 +1,30 @@
+body {
+	background-color: black;
+}
+
+#screen {
+	width: 656px;
+	height: 416px;
+}
+
+#screen.title {
+	background: url(../img/logo.png);
+}
+#screen.gender {
+  background: url(../img/gender.png);
+}
+#screen.cost {
+  background: url(../img/cost.png);
+}
+#screen.colour {
+  background: url(../img/colour.png);
+}
+#screen.fanciness {
+  background: url(../img/fanciness.png);
+}
+#screen.weather {
+  background: url(../img/weather.png);
+}
+#screen.wait {
+  background: url(../img/gypsycat.png);
+}
