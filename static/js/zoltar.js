@@ -47,8 +47,15 @@ Zoltar.prototype = {
     if ( this.current_question == null ) {
       this.showScreen('wait');
       RecommendationGrabber.getRecommendations( this.current_session.answers, function( outfit ) {
-        console.log('Got One!');
-        console.log( outfit );
+        $('#receipt')
+          .html('')
+          .append('<img src="img/receiptheader.png">');
+        for (var i=0;i<outfit.length;i++) {
+          var item = outfit[i];
+          $('#receipt').append('SKU# ' + item.sku + "<br>" )
+          .append(item.name + "<br>")
+          .append('<img src="' + item.thumb + '"><br><br>');
+        }
       });
     } else {
       // Load question image

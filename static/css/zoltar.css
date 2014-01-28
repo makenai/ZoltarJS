@@ -7,6 +7,14 @@ body {
 	height: 416px;
 }
 
+#receipt {
+  width: 384px;
+  background-color: white;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
 #screen.title {
 	background: url(../img/logo.png);
 }

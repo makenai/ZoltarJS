@@ -40,7 +40,7 @@ var RecommendationGrabber = {
             thumb : item.thumbnailImageUrl,
             image : 'http://zimg.zappos-expo.com/pi/thermal/style_id/' + item.styleId + '/angle/PAIR',
             price : item.price,
-            sku   : item.sku,
+            sku   : item.productId,
             name  : item.productName
           };
         });
