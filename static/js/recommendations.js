@@ -21,6 +21,24 @@ var RecommendationGrabber = {
     '"productType":["footwear"]'
   ],
 
+  CORE_VALUES: [
+    "Deliver WOW Through Service",
+    "Embrace and Drive Change",
+    "Create Fun and A Little Weirdness",
+    "Be Adventurous, Creative, and Open-Minded",
+    "Pursue Growth and Learning",
+    "Build Open and Honest Relationships With Communication",
+    "Build a Positive Team and Family Spirit",
+    "Do More With Less",
+    "Be Passionate and Determined",
+    "Be Humble",
+    "Your Face"
+  ],
+
+  getCoreValue: function() {
+    return this.CORE_VALUES[ Math.floor(Math.random()*this.CORE_VALUES.length) ];
+  },
+
   getRecommendations: function(answers, callback) {
     var outfit = [],
       filters = [],
@@ -38,7 +56,7 @@ var RecommendationGrabber = {
           var item = data.results[ Math.floor(Math.random()*data.results.length) ];
           outfit[i] = {
             thumb : item.thumbnailImageUrl,
-            image : 'http://zimg.zappos-expo.com/pi/thermal/style_id/' + item.styleId + '/angle/PAIR',
+            image : '/thermalImage/' + item.styleId,
             price : item.price,
             sku   : item.productId,
             name  : item.productName

@@ -53,9 +53,11 @@ Zoltar.prototype = {
         for (var i=0;i<outfit.length;i++) {
           var item = outfit[i];
           $('#receipt').append('SKU# ' + item.sku + "<br>" )
-          .append(item.name + "<br>")
-          .append('<img src="' + item.thumb + '"><br><br>');
+            .append(item.name + "<br>")
+            .append('<img src="' + item.image + '"><br><br>');
         }
+        $('#receipt').append("Your core value of the day is:<br>")
+          .append( RecommendationGrabber.getCoreValue() );
       });
     } else {
       // Load question image

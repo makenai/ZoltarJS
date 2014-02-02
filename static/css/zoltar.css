@@ -13,6 +13,14 @@ body {
   position: absolute;
   top: 0;
   right: 0;
+  font-size: 18px;
+  line-height: 20px;
+  font-family: monospace;
+  font-weight: 300;
+  padding: 0 20px 20px 20px;
+}
+#receipt img {
+  margin: 20px 0;
 }
 
 #screen.title {
