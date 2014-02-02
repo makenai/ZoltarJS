@@ -7,6 +7,17 @@ body {
 	height: 416px;
 }
 
+#marquee {
+  margin-top: 5px;
+  width: 656px;
+  height: 144px;
+  background: url(../img/marquee.png);
+}
+#marquee.on {
+  background-position: 0 144px;
+}
+
+
 #receipt {
   width: 384px;
   background-color: white;
@@ -21,6 +32,10 @@ body {
 }
 #receipt img {
   margin: 20px 0;
+}
+
+#screen.snow {
+  background: url(../img/snow.gif);
 }
 
 #screen.title {
