@@ -12,7 +12,10 @@ var Zoltar = function() {
     this.buffers = buffers;
   }.bind(this));
 
-  this.joystick = new RetroJoyStick();
+  this.joystick = new RetroJoyStick({ 
+    container: document.getElementById('container'),
+    position: 'custom'
+  });
 
   this.current_session = null;
 

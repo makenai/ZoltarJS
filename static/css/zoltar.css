@@ -1,14 +1,44 @@
 body {
-	background-color: black;
+	background: black url(../img/stars.gif);
+}
+
+#container {
+  width: 1024px;
+  height: 570px;
+  position: relative;
+  margin: auto;
 }
 
 #screen {
 	width: 656px;
 	height: 416px;
+  position: absolute;
+  top: 0;
+  left: 190px;
+}
+
+#curtains {
+  width: 1024px;
+  height: 500px;
+  position: absolute;
+  top: 0;
+  background: url(../img/curtains.png);
+}
+
+#void {
+  position: absolute;
+  top: 0;
+  left: 50px;
+  width: 900px;
+  height: 570px;
+  background-color:black;
+  overflow: hidden;
 }
 
 #marquee {
-  margin-top: 5px;
+  position: absolute;
+  top: 421px;
+  left: 190px;
   width: 656px;
   height: 144px;
   background: url(../img/marquee.png);
@@ -17,13 +47,18 @@ body {
   background-position: 0 144px;
 }
 
+#retrostick-1 {
+  position: absolute;
+  top: 580px;
+  left: 440px;
+}
 
 #receipt {
   width: 384px;
   background-color: white;
   position: absolute;
-  top: 0;
-  right: 0;
+  bottom: 0;
+  left: 310px;
   font-size: 18px;
   line-height: 20px;
   font-family: monospace;
