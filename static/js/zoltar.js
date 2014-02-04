@@ -47,10 +47,13 @@ Zoltar.prototype = {
     return false;
 	},
 
-  nextQuestion: function() {
-    this.current_question = this.current_session.nextQuestion();
-    if ( this.current_question == null ) {
-      this.showScreen('wait');
+  showReceipt: function() {
+    $('#receipt').imagesLoaded(function( instance ) {
+      $('#receipt').show();
+    });
+  },
+
+  printReceipt: function() {
       RecommendationGrabber.getRecommendations( this.current_session.answers, function( outfit ) {
         $('#receipt')
           .html('')
@@ -59,11 +62,19 @@ Zoltar.prototype = {
           var item = outfit[i];
           $('#receipt').append('SKU# ' + item.sku + "<br>" )
             .append(item.name + "<br>")
-            .append('<img src="' + item.image + '"><br><br>');
+            .append('<img class="" src="' + item.image + '"><br><br>');
         }
         $('#receipt').append("Your core value of the day is:<br>")
           .append( RecommendationGrabber.getCoreValue() );
-      });
+          this.showReceipt();
+      }.bind(this));
+  },
+
+  nextQuestion: function() {
+    this.current_question = this.current_session.nextQuestion();
+    if ( this.current_question == null ) {
+      this.showScreen('wait');
+      this.printReceipt();
     } else {
       // Load question image
       this.showScreen( this.current_question.screen );
