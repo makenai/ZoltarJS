@@ -23,6 +23,11 @@ var Zoltar = function() {
 
 Zoltar.prototype = {
 
+  reset: function() {
+    Z.showScreen('title');
+    this.current_session = null;
+  },
+
   playSound: function(name) {
     if ( this.buffers && this.buffers[name] ) {
       source = this.audioContext.createBufferSource();
@@ -33,7 +38,6 @@ Zoltar.prototype = {
   },
 
   showScreen: function(name) {
-    // TODO - fun transition?
     $('#screen').attr('class', name );
   },
 
@@ -49,20 +53,27 @@ Zoltar.prototype = {
 
   showReceipt: function() {
     $('#receipt').imagesLoaded(function( instance ) {
-      $('#receipt').show();
+      var receiptHeight = $('#receipt').height(),
+        screenHeight = $( window ).height();
+      $('#receipt').css('top', screenHeight).show();
+      $('#receipt').animate({ top: screenHeight/4 }, 1200, 'easeInOutCirc');
     });
   },
 
   printReceipt: function() {
       RecommendationGrabber.getRecommendations( this.current_session.answers, function( outfit ) {
         $('#receipt')
-          .html('')
+          .html('<a href="#" id="closeReceipt">&#x2718;</a>')
           .append('<img src="img/receiptheader.png">');
         for (var i=0;i<outfit.length;i++) {
           var item = outfit[i];
-          $('#receipt').append('SKU# ' + item.sku + "<br>" )
-            .append(item.name + "<br>")
-            .append('<img class="" src="' + item.image + '"><br><br>');
+          if (item) {
+            $('#receipt').append('SKU# ' + item.sku + "<br>" )
+              .append(item.name + "<br>")
+              .append('<img class="" src="' + item.image + '"><br><br>');
+          } else {
+            $('#receipt').append('[ item not found ]<br><br>');
+          }
         }
         $('#receipt').append("Your core value of the day is:<br>")
           .append( RecommendationGrabber.getCoreValue() );
@@ -82,9 +93,11 @@ Zoltar.prototype = {
   },
 
 	answerQuestion: function( direction ) {
-    this.current_session.storeAnswer( this.current_question[ direction ] )
-    this.playSound('blip');
-    this.nextQuestion();
+    if ( this.current_question ) {
+      this.current_session.storeAnswer( this.current_question[ direction ] )
+      this.playSound('blip');
+      this.nextQuestion();      
+    }
 	},
 
 	// Controls

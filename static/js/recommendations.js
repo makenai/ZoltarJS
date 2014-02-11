@@ -54,6 +54,8 @@ var RecommendationGrabber = {
       (function(i) {
         var req = $.getJSON( url + '&callback=?', function( data ) {
           var item = data.results[ Math.floor(Math.random()*data.results.length) ];
+          if (!item)
+            return;
           outfit[i] = {
             thumb : item.thumbnailImageUrl,
             image : '/thermalImage/' + item.styleId,
