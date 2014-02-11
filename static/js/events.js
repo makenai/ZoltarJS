@@ -58,6 +58,7 @@ $(function() {
   });
 
   $(document).click('#closeReceipt', function(e) {
+    e.preventDefault();
     $('#receipt').animate({ top: -($('#receipt').height() + 200) }, {
       duration: 600,
       easing: 'easeOutCirc',
